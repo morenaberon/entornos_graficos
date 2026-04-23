@@ -1,0 +1,122 @@
+<!-- HECHO POR: MORENA BERON E IGNACIO CASTELLARIN-->
+
+<!-- ejercicio 1:
+    1) ventajas html5: 
+        Semántica Mejorada: Introdujo etiquetas (como <nav>, <footer>, <article>) que describen su propio contenido. 
+            Esto mejora drásticamente el SEO (posicionamiento en buscadores) y 
+            la accesibilidad para personas que usan lectores de pantalla.
+        Multimedia Nativa: Permite insertar audio y video directamente con las etiquetas <audio> y <video>. 
+            Esto elimina la necesidad de plugins de terceros como Flash, que antes eran lentos y menos seguros.
+        Interactividad y Gráficos: Incluye el elemento <canvas> para crear animaciones y dibujos 2D/3D mediante
+             código, además de soporte nativo para SVG (gráficos vectoriales que no pierden calidad).
+        Webs Adaptativas (Responsive): Facilita que un mismo sitio se vea y funcione correctamente en múltiples
+            dispositivos, desde computadoras hasta celulares y tablets.
+        Funcionalidades Avanzadas (APIs): Incorpora herramientas potentes que antes eran imposibles de usar de 
+            forma estándar, tales como:
+                                       Geolocalización: Conocer la ubicación del usuario.
+                                       Almacenamiento Local: Guardar datos en el navegador del usuario 
+                                                            de forma eficiente (Local Storage).
+                                        Drag and Drop: Capacidad de arrastrar y soltar elementos o archivos 
+                                                        en el sitio webdentro de la web.
+                                                        
+    2) ¿Por qué utilizar HTML5?:
+        HTML5 es el estándar actual porque permite que la web sea más interactiva, semántica y accesible. 
+        Su uso es fundamental ya que actúa como la columna vertebral de cualquier sitio moderno, permitiendo 
+        que el navegador comprenda la jerarquía y el propósito de cada elemento sin depender de software externo.-->
+
+<!-- ejercicio 2:
+    2a)Para asegurar que el audio se escuche en la mayoría de los navegadores, HTML5 
+    estandarizó principalmente tres formatos:
+
+    MP3: El más común y compatible con prácticamente todos los navegadores y dispositivos.
+
+    WAV: Ofrece alta calidad (sin compresión), pero genera archivos muy pesados.
+
+    OGG: Un formato de código abierto que es una excelente alternativa al MP3, muy utilizado en la web.-->
+
+    <!-- 2b) -->
+     
+
+<!-- Estructura unificada: Se consolidan todos los ejercicios en un único documento HTML 
+     para garantizar la validez del código y facilitar su visualización secuencial. -->
+
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!--para que el navegador muestre 
+    correctamente los caracteres especiales a la hora de ejecutar el codigo-->
+    <title>Práctica HTML5</title>
+</head>
+<body>
+
+    <h2>Reproducir audio:</h2>
+    
+    <audio controls>
+        <!-- URL del ejercicio que se recomendo de ejemplo-->
+        <source src="https://html5tutorial.info/media/vincent.mp3" type="audio/mpeg">
+        <!-- URL de respaldo que usamos para hacer al codigo funcional (lo sacamos de wikimedia commons
+          porque averiguamos que se usa para pruebas al ser de contenido libre) -->
+        <source src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg" type="audio/ogg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+<!-- ejercicio 3:
+    3a) Al igual que con el audio, HTML5 busca compatibilidad universal. Los tres formatos principales
+     soportados por los navegadores modernos son:
+
+    MP4 (H.264 / AAC): Es el estándar de la industria. Ofrece la mejor relación entre calidad visual y tamaño 
+    de archivo pequeño. Es compatible con todos los navegadores y dispositivos móviles.
+
+    WebM: Un formato de alta calidad y libre de regalías desarrollado por Google, optimizado específicamente 
+    para la web.
+
+    Ogg (Theora / Vorbis): Una alternativa de código abierto, aunque es menos común que los dos anteriores.-->
+
+    <!-- 3b) -->  
+
+    <h2>Reproducir video</h2>
+
+    <video width="640" height="360" controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+        Tu navegador no soporta el elemento de video.
+    </video>
+<!-- ejercicio 4: -->
+    <h2>Formularios y Validaciones</h2>
+
+    <form>
+        <!-- 4a) Campo requerido -->
+        <div>
+            <label for="nombre">Ingrese nombre:</label> <!-- usamos <label> para que en el navegador se ponga 
+                automaticamente el cursor en el recuadro del input-->
+            <input type="text" id="nombre" name="nombre" required>
+        </div><br>
+
+        <!-- 4.B) Campo de tipo email -->
+        <div>
+            <label for="email">Ingrese correo electrónico (que incluya el signo @):</label>
+            <input type="email" id="email" name="email">
+        </div><br>
+
+        <!-- 4.C) Campo de tipo fecha -->
+        <div>
+            <label for="fecha">Seleccione una Fecha</label>
+            <input type="date" id="fecha" name="fecha">
+        </div><br>
+
+        <!-- 4.D) Campo de tipo color -->
+        <div>
+            <label for="color">Elige un color</label>
+            <input type="color" id="color" name="color">
+        </div><br>
+
+        <!-- 4.E) Campo de tipo number con min y max -->
+        <div>
+            <label for="cantidad">Cantidad (Mínimo 1, Máximo 10):</label>
+            <input type="number" id="cantidad" name="cantidad" min="1" max="10">
+        </div><br>
+
+        <button type="submit">Probar Validaciones</button>
+    </form>
+
+</body>
+</html>
