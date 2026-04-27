@@ -1,0 +1,210 @@
+ /* 1)
+    1. ¿QUÉ ES CSS Y PARA QUÉ SE USA?
+   CSS (Cascading Style Sheets) es un lenguaje de hojas de estilo utilizado 
+   para controlar la apariencia y el formato de una página web. 
+   Su función principal es separar el contenido (HTML) de la presentación 
+   visual (diseño). Permite especificar estilos detallados como:
+   - Tamaño y tipos de fuentes.
+   - Colores y fondos.
+   - Espaciado y ubicación de elementos (layout).
+
+   2. FUNCIONAMIENTO DE LAS REGLAS DE ESTILO:
+   CSS funciona mediante reglas que se aplican selectivamente. 
+   Cada regla tiene dos partes principales:
+   - Selector: Indica a qué elemento HTML se le aplicará el estilo.
+   - Declaración: Va entre llaves { } y contiene la Propiedad (qué aspecto 
+     se cambia) y el Valor (qué medida o color se asigna).
+   Ejemplo: h1 { color: red; }
+
+   3. LAS TRES FORMAS DE DAR ESTILO A UN DOCUMENTO:
+   - A nivel de elemento HTML: Usando el atributo 'style' dentro de la etiqueta.
+   - A nivel de página: Dentro de la sección <head> usando etiquetas <style>.
+   - Archivo externo: Mediante un archivo .css separado vinculado al HTML 
+     (es la forma más eficiente y recomendada).
+
+    4. TIPOS DE SELECTORES MÁS UTILIZADOS Y EJEMPLOS:
+   - Selector de Etiqueta: Aplica a todas las etiquetas de ese tipo.
+     Ejemplo: p { color: blue; } (Todos los párrafos serán azules).
+   - Selector de Clase: Aplica a elementos con un atributo class="nombre". 
+     Se define con un punto.
+     Ejemplo: .resaltado { font-weight: bold; }
+   - Selector de ID: Aplica a un único elemento con un ID específico. 
+     Se define con el signo #.
+     Ejemplo: #encabezado { background-color: #CCFFCC; }
+   - Selector Agrupado: Aplica el mismo estilo a varios selectores separados por coma.
+     Ejemplo: h1, h2, h3 { text-align: center; }
+
+    5. PSEUDO-CLASES:
+    Es una palabra clave que se añade a los selectores para especificar un 
+    estado especial del elemento. En vínculos (<a>) las más usadas son:
+    - a:link    -> Vínculo no visitado.
+    - a:visited -> Vínculo ya visitado.
+    - a:hover   -> Cuando el puntero está sobre el vínculo.
+    - a:active  -> El momento en que se hace clic.
+
+    6. LA HERENCIA:
+    Es el mecanismo por el cual los elementos hijos heredan automáticamente 
+    ciertas propiedades de sus elementos padres. Por ejemplo, si se define 
+    una fuente en el "body", todos los párrafos y listas dentro de él usarán 
+    esa fuente a menos que se defina una regla específica para ellos.
+
+    7. PROCESO DE CASCADA:
+    Es el algoritmo que determina qué regla se aplica cuando hay conflictos 
+    (varias reglas afectando al mismo elemento). Se basa en tres criterios:
+    1. Importancia: Si tiene el modificador !important.
+    2. Especificidad: Los IDs tienen más peso que las clases, y estas más que 
+        las etiquetas.
+    3. Orden de aparición: Si la importancia y especificidad son iguales, 
+        gana la última regla escrita en el código. */
+
+/*2)*/
+p#normal { /*Busca un párrafo que tenga el ID 'normal'; El texto se verá en fuente Arial, tamaño 11px y en negrita*/
+        font-family: arial,helvetica; 
+        font-size: 11px; 
+        font-weight: bold; 
+} 
+*#destacado { /*Busca cualquier cosa con el ID 'destacado', Ambos elementos tendrán un borde azul sólido de 2px de grosor.*/
+        border-style: solid; 
+        border-color: blue; 
+        border-width: 2px; 
+} 
+#distinto { /*Es un selector de ID simple, El párrafo tendrá un fondo color celeste claro y el texto será rojo.*/
+        background-color: #9EC7EB; 
+        color: red; 
+} 
+<p id="normal">Este es un párrafo</p> 
+
+<p id="destacado">Este es otro párrafo</p>
+
+<table id="destacado"><tr><td>Esta es una tabla</td></tr></table>
+
+<p id="distinto">Este es el último párrafo</p>
+
+/*Aclaracion:  "#" Se usa para dar estilo a un solo elemento único en toda la página.*/
+
+
+/*3)*/
+p.quitar { /*Solo a los párrafos (p) que tengan la clase quitar, letras de color rojo.*/
+        color: red; 
+} 
+*.desarrollo { /*Cualquier cosa con la clase desarrollo, se convierte el texto a 8px*/
+        font-size: 8px; 
+} 
+.importante { /*Es un selector de clase general, el texto se agranda a 20px*/
+        font-size: 20px; 
+} 
+<p class="desarrollo">  
+        En este primer párrafo trataremos lo siguiente: 
+        <br />xxxxxxxxxxxxxxxxxxxxxxxxx 
+</p> 
+<p class="quitar"> 
+        Este párrafo debe ser quitado de la obra… 
+        <br />xxxxxxxxxxxxxxxxxxxxxxxxx 
+</p> 
+<p> /*No tiene clase, por lo que no se le aplica ninguna de las reglas anteriores. Se verá con el estilo por defecto*/
+        En este otro párrafo trataremos otro tema:<br /> 
+        xxxxxxxxxxxxxxxxxxxxxxxxx 
+</p>
+<p class="importante"> 
+        Y este es el párrafo más importante de la obra… 
+        <br />xxxxxxxxxxxxxxxxxxxxxxxxx 
+</ p> 
+<h1 class="quitar">Este encabezado también debe ser quitado de la obra</h1> /* no cambia a color rojo porque css busca un parrafo*/
+
+<p class="quitar importante">Se pueden aplicar varias clases a la vez</p> /*En esta linea se aplican la regla quitar e importante, por lo tanto el texto sera de color rojo y en un tamaño de 20px*/
+
+/*Aclaracion: "*" están diseñadas para repetirse y combinarse en varios elementos de la página.*/
+
+/*4)*/
+/*En los dos códigos se aplican estilos utilizando clases de CSS, pero de manera diferente.
+
+En el primer caso, la clase "contenido" se aplica únicamente al elemento <p>, y además se utiliza 
+un estilo en línea (style="font-weight: normal;"). Esto provoca que el texto del párrafo no esté en negrita, 
+ya que el estilo en línea tiene mayor prioridad que la clase. El resto de los elementos, como la tabla, no se 
+ven afectados por la clase.
+
+En el segundo caso, la clase "contenido" se aplica al <body>, por lo que todos los elementos dentro del cuerpo 
+(como el párrafo y la tabla) heredan esos estilos. En este caso, el texto sí se muestra en negrita, ya que no hay 
+ningún estilo en línea que lo sobrescriba.
+
+En conclusión, el primer código aplica los estilos de forma más específica (solo a un elemento), mientras que el 
+segundo lo hace de forma general (a todo el contenido). Además, se observa que los estilos en línea tienen mayor 
+prioridad que los definidos en clases.*/
+
+/*5)*/
+    /*1)**/
+    h1, h2, h3, h4, h5, h6 {
+        color: red;
+    }
+    /*2*/
+    div p [href] {
+        color: black;
+    }
+    /*3*/
+    #ultimo ul {
+        color: yellow;
+    }
+
+    #ultimo ul a {
+        color: blue;
+    }
+    /*4*/
+    div .importante {
+        color: green;
+    }
+    h1 .importante, h2 .importante, h3 .importante {
+        color: red;
+    }
+    /*5*/
+    h1[title] {
+        color: blue;
+    }
+    /*6*/
+    ol a:link {
+        color: blue;
+        text-decoration: none;
+    }
+
+    ol a:visited {
+        color: violet;
+        text-decoration: none;
+    }
+
+/*6)*/
+/*principal.html (modificado)*/
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC
+html401-19991224/loose.dtd"> 
+<HTML lang=es xmlns="http://www.w3.org/1999/xhtml"> 
+<HEAD><TITLE>Página Principal</TITLE> 
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1"></META> 
+<link rel="stylesheet" type="text/css" href="estilo2.css"> 
+</HEAD> 
+<BODY> 
+<DIV id=encabezado><H1>ASIGNATURA ELECTIVA</H1></DIV> 
+<DIV id=contenido> 
+<H2>Contenido</H2> 
+<p>En esta asignatura ...........................<BR></p> 
+<P>El objetivo fundamental ..................</P> 
+<P>etc., etc., ...........................................</P> 
+<P>etc., etc., ...........................................</P> 
+<P>Adem&aacute;s, ...........................................</P> 
+<P>etc., etc., ...........................................</P> 
+<P class="resaltado">Pero, lo más importante es ..............................</P> 
+<P class="resaltado">etc., etc., ...........................................</P> 
+<P>Y, entonces, podemos continuar con ..................</P> 
+<P>etc., etc., ...........................................</P> 
+<P>&nbsp;</P> 
+</DIV> 
+<DIV id=menu> 
+<H3>Enlaces</H3> 
+<UL class="vineta"> 
+<LI><A href="http://www.e-style.com.ar/moodle" target=_blank>Curso Actual</A> 
+<LI><A href="http://www.e-style.com.ar/logica" target=_blank>Curso anterior</A> </LI> 
+<LI><A href="http://www.e-style.com.ar/ntedu/consultas.htm" target=_blank>Contacto</A></LI> 
+</UL> 
+</DIV> 
+<DIV id=pie class="estilopie">Ingeniería en Sistemas de Información - Universidad Tecnológica Nacional Rosario</DIV> 
+<p>&nbsp;</p> 
+</BODY> 
+</HTML>
+
