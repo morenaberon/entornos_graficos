@@ -42,6 +42,19 @@ echo $a, $b, $c, $d, $f , $g;
     - ?:     Operador ternario: elige un valor si la condición es verdadera y otro si es falsa 
     - ,     Separa valores dentro del echo
 
+    #correccion de los tipos de operadores despues de la clase de teoria:
+        Operador unario:
+        - ++$d    incremento previo: aumenta el valor de $d antes de usarlo.
+        - $d++    incremento posterior: primero usa el valor de $d y después lo aumenta en 1.
+
+        Operadores binarios:
+        - =       asignación: guarda un valor en una variable.
+        - *      multiplicación: multiplica dos valores.
+        - +=      suma y asignación: suma un valor a la variable y guarda el resultado en la misma variable.
+
+        Operador ternario:
+        - ?:      operador condicional ternario.
+
 • las funciones y sus parámetros:
     -doble($i)
         Función creada por el programador.
