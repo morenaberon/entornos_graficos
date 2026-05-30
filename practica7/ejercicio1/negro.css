@@ -1,0 +1,16 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Garamond, Arial, serif;
+    padding: 30px;
+}
+
+h1 {
+    color: white;
+}
+
+form {
+    background-color: #222222;
+    padding: 20px;
+    width: 450px;
+}
